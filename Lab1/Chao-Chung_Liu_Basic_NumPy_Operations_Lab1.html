@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Lab 1 – Basic NumPy Operations</h2><br>Chao-Chung,Liu</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">The purpose of this lab is to practice how to use NumPy to create 2-D arrays and easily compute mathematical operations.<br>NumPy (Numerical Python) is an open-source package.<br>In this lab you will practice how to create arrays and use NumPy array operations.<br>Use indexing and slicing for 2-D arrays.<br>Find the shape of an array, reshape it and stack it horizontally and vertically,<br>Use the NumPy Linear Algebra package to solve system of Linear Equations.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Part A</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">1.Create a Notebook to demonstrate NumPy Operations.</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import numpy as np</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">2.Create an array that starts from the integer 1, ends at 20, incremented by 3.<br><br><br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>arr_step = np.arange(1, 21, 3)
+# np.arange(start, stop, step)
+print("2. array:", arr_step)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">2. array: [ 1  4  7 10 13 16 19]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">3.Create a new array of shape 3 with random numbers between 0 and 1.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>arr_rand = np.random.rand(3)
+print("3. random:", arr_rand)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">3. random: [0.8705132  0.84821598 0.47572369]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">4.Create a 2 D array [[10,20,45], [30,12,16], [42,17,56]] and perform the following operations:<br><br>Slice the 2D array to get the first two rows, slice the 2D array to get the last two rows.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>arr_2d = np.array([[10, 20, 45], [30, 12, 16], [42, 17, 56]])
+first_two_rows = arr_2d[:2, :]
+last_two_rows = arr_2d[1:, :]
+
+print("original array:\n", arr_2d)
+print("first_two_rows:\n", first_two_rows)
+print("last two rows:\n", last_two_rows)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">original array:
+ [[10 20 45]
+ [30 12 16]
+ [42 17 56]]
+first_two_rows:
+ [[10 20 45]
+ [30 12 16]]
+last two rows:
+ [[30 12 16]
+ [42 17 56]]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">5.Create two 2x2 arrays and demonstrate how you can stack the elements vertically, horizontally, and split the arrays into smaller arrays.</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+
+# Vertical Stack
+v_stack = np.vstack((a, b))
+
+# Horizontal Stack
+h_stack = np.hstack((a, b))
+
+# Split
+split_arr = np.hsplit(h_stack, 2)
+
+print("Vertical Stack:\n", v_stack)
+print("Horizontal Stack:\n", h_stack)
+print("Split Array:\n", split_arr)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Vertical Stack:
+ [[1 2]
+ [3 4]
+ [5 6]
+ [7 8]]
+Horizontal Stack:
+ [[1 2 5 6]
+ [3 4 7 8]]
+Split Array:
+ [array([[1, 2],
+       [3, 4]]), array([[5, 6],
+       [7, 8]])]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">6.Create two matrices X= ([[5, 7, 2], [4, 5, 6], [7, 4 ,2]]) Y= ([[4, 2], [6, 2], [4, 2]]), Is it possible to multiply these matrices?<br><br>Demonstrate the case when it is not possible to.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>X = np.array([[5, 7, 2], [4, 5, 6], [7, 4, 2]]) # 3x3
+Y = np.array([[4, 2], [6, 2], [4, 2]])       # 3x2
+
+print("Matrix multiplication rule: The number of rows in the left matrix must equal the number of columns in the right matrix.")
+product = np.dot(X, Y)
+print("X*Y:\n", product)
+print("So Y(3x2)*X(3x3)==&gt;Error")</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Matrix multiplication rule: The number of rows in the left matrix must equal the number of columns in the right matrix.
+X*Y:
+ [[70 28]
+ [70 30]
+ [60 26]]
+So Y(3x2)*X(3x3)==&gt;Error
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">7.Create two arrays, x = ([2, -1, -8]) y = ([3, 1, -2]), Find the Shape, Number of dimensions of vector x.<br>         <br>Reshape the vector x to a matrix of size (3,1) and determine the number of dimensions after reshaping y to a matrix of (3,1).<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>x = np.array([2, -1, -8])
+y = np.array([3, 1, -2])
+
+print(f"x shape: {x.shape}, dimensions: {x.ndim}")
+
+# Reshape
+x_reshaped = x.reshape(3, 1)
+y_reshaped = y.reshape(3, 1)
+print(x_reshaped)
+print(y_reshaped)
+
+print(f"new x shape: {x_reshaped.shape}, dimensions: {x_reshaped.ndim}")</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">x shape: (3,), dimensions: 1
+[[ 2]
+ [-1]
+ [-8]]
+[[ 3]
+ [ 1]
+ [-2]]
+new x shape: (3, 1), dimensions: 2
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">8.How does broadcasting work? Demonstrate the subtraction, multiplication by considering a 3 x 3 matrix.</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>matrix_3x3 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+#subtraction
+sub_broadcast = matrix_3x3 - 10
+
+#multiplication
+mul_broadcast = matrix_3x3 * 2
+
+print("subtraction:\n", sub_broadcast)
+print("multiplication:\n", mul_broadcast)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">subtraction:
+ [[-9 -8 -7]
+ [-6 -5 -4]
+ [-3 -2 -1]]
+multiplication:
+ [[ 2  4  6]
+ [ 8 10 12]
+ [14 16 18]]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">9.Add Markdown text, with a headline, that provides a very brief overview of the graphs (e.g., one sentence for each).<br>         <br>Feel free to add additional Markdown elements (description/additional comments)<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import matplotlib.pyplot as plt
+
+# 1. Random Values Bar Chart (Part A - Q3)
+plt.figure(figsize=(10, 4))
+plt.subplot(1, 2, 1)
+plt.bar(range(len(arr_rand)), arr_rand, color='skyblue')
+plt.title("Random Numbers Distribution")
+plt.xlabel("Index")
+plt.ylabel("Value")
+
+plt.tight_layout()
+plt.show()</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAg0AAAGGCAYAAAD4h7ISAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQAAMcdJREFUeJzt3Xt8zvX/x/Hntc2uOW1ozDDGHHIoK+JGhRjLqXTAF2WWY/Gl1okIHYei9ZVyKOn4pRQpcmgRSSqHfomccgobctjM15bt/fuj265ctvHebLvGHvfb7brV9b7e78/n9Xnv47qe1+f6fK7LYYwxAgAAuAQvTxcAAACuDIQGAABghdAAAACsEBoAAIAVQgMAALBCaAAAAFYIDQAAwAqhAQAAWCE0AAAAK4QGIAf9+vVTaGiop8u4IqxatUoOh0Pz58/3dCn5rjD3g9DQUPXr1891f86cOXI4HPrpp58KZf1t2rRRmzZtCmVduDIRGuBxmU+MmTcfHx9VrVpV/fr108GDBz1dXpGROU9+fn7ZzkubNm3UqFEjD1R25Rg/frzbvlaqVClVr15dXbt21dtvv63U1NR8Wc/WrVs1fvx47d27N1+Wl5+Kcm0o+nw8XQCQ6dlnn1XNmjV19uxZff/995ozZ46+/fZbbdmyRX5+fp4ur8hITU3VhAkTNHXqVE+XcsV64403VKZMGaWmpurgwYNatmyZHnjgAcXFxemLL75QSEiIq++sWbOUkZGRq+Vv3bpVzzzzjNq0aZOroxTbt2+Xl1fBvpe7WG3Lly8v0HXjykdoQJHRsWNHNW3aVJI0YMAABQYGauLEiVq0aJF69Ojh4eqKjvDwcM2aNUujRo1SlSpVPF1OoUpJSVHp0qUvezn33nuvAgMDXffHjh2rDz74QH379lX37t31/fffux4rUaLEZa/vYowxOnv2rEqWLCmn01mg67oUX19fj64fRR8fT6DIuvXWWyVJu3fvdrWlpaVp7NixatKkiQICAlS6dGndeuutWrlypdvYvXv3yuFw6OWXX9bMmTMVFhYmp9Opm266ST/++GOWdS1cuFCNGjWSn5+fGjVqpAULFmRbU0pKih599FGFhITI6XSqXr16evnll3Xhj8U6HA4NGzZMH3/8sRo0aKCSJUuqRYsW+uWXXyRJM2bMUO3ateXn56c2bdrk6lDxU089pfT0dE2YMOGi/TLnYM6cOVkeczgcGj9+vOt+5mH7HTt26L777lNAQIAqVqyop59+WsYYHThwQHfeeaf8/f1VuXJlTZ48Odt1pqen66mnnlLlypVVunRp3XHHHTpw4ECWfuvXr9ftt9+ugIAAlSpVSq1bt9batWvd+mTWtHXrVvXu3Vvly5fXLbfcIklKSEhQdHS0qlWrJqfTqeDgYN15552Xdci9T58+GjBggNavX68VK1a42rM7p2Hu3Llq0qSJypYtK39/f1133XV69dVXJf39MVL37t0lSbfddpvro5BVq1ZJ+vu8hS5dumjZsmVq2rSpSpYsqRkzZrgeO/+chkxnzpzR4MGDdc0118jf3199+/bViRMn3Ppc+DfNdP4yL1Vbduc0HDlyRP3791dQUJD8/PzUuHFjvfPOO259cvvvDVcujjSgyMp8AShfvryrLSkpSW+++aZ69eqlgQMHKjk5WW+99ZYiIyP1ww8/KDw83G0ZH374oZKTkzV48GA5HA5NmjRJd999t37//XfXO8jly5frnnvuUYMGDRQbG6s///zT9YJ0PmOM7rjjDq1cuVL9+/dXeHi4li1bpscff1wHDx7UK6+84tZ/zZo1WrRokYYOHSpJio2NVZcuXfTEE0/o9ddf10MPPaQTJ05o0qRJeuCBB/T1119bzUvNmjXVt29fzZo1SyNHjszXow09e/ZU/fr1NWHCBC1evFjPP/+8KlSooBkzZqht27aaOHGiPvjgAz322GO66aab1KpVK7fxL7zwghwOh5588kkdOXJEcXFxioiI0ObNm1WyZElJ0tdff62OHTuqSZMmGjdunLy8vPT222+rbdu2WrNmjZo1a+a2zO7du6tOnTp68cUXXeHsnnvu0a+//qp///vfCg0N1ZEjR7RixQrt37//sk5avP/++zVz5kwtX75c7du3z7bPihUr1KtXL7Vr104TJ06UJG3btk1r167ViBEj1KpVKw0fPlz/+c9/9NRTT6l+/fqS5Pqv9PfHEL169dLgwYM1cOBA1atX76J1DRs2TOXKldP48eO1fft2vfHGG9q3b5/rBFRbNrWd73//+5/atGmjXbt2adiwYapZs6Y+/vhj9evXTydPntSIESPc+tv8e8MVzgAe9vbbbxtJ5quvvjJHjx41Bw4cMPPnzzcVK1Y0TqfTHDhwwNX33LlzJjU11W38iRMnTFBQkHnggQdcbXv27DGSzDXXXGOOHz/uav/ss8+MJPP555+72sLDw01wcLA5efKkq2358uVGkqlRo4arbeHChUaSef75593Wf++99xqHw2F27drlapNknE6n2bNnj6ttxowZRpKpXLmySUpKcrWPGjXKSHLre7F5+vHHH83u3buNj4+PGT58uOvx1q1bm4YNG2aZg7fffjvLsiSZcePGue6PGzfOSDKDBg1ytZ07d85Uq1bNOBwOM2HCBFf7iRMnTMmSJU1UVJSrbeXKlUaSqVq1qtu2ffTRR0aSefXVV40xxmRkZJg6deqYyMhIk5GR4ep35swZU7NmTdO+ffssNfXq1cut9hMnThhJ5qWXXrrofGUnc5lHjx7N9vHMZd91112utqioKLf9YMSIEcbf39+cO3cux/V8/PHHRpJZuXJllsdq1KhhJJmlS5dm+9j585r5N2/SpIlJS0tztU+aNMlIMp999pmr7cK/aU7LvFhtrVu3Nq1bt3bdj4uLM5LM+++/72pLS0szLVq0MGXKlHH9rXPz7w1XNj6eQJERERGhihUrKiQkRPfee69Kly6tRYsWub3j9/b2dn3umpGRoePHj+vcuXNq2rSpNm7cmGWZPXv2dDtSkfmRx++//y5JOnz4sDZv3qyoqCgFBAS4+rVv314NGjRwW9aSJUvk7e2t4cOHu7U/+uijMsboyy+/dGtv166d27ve5s2bS/r7XXLZsmWztGfWZKNWrVqud8WHDx+2HncpAwYMcP2/t7e3mjZtKmOM+vfv72ovV66c6tWrl229ffv2ddu2e++9V8HBwVqyZIkkafPmzdq5c6d69+6tP//8U8eOHdOxY8eUkpKidu3aafXq1VlOOhwyZIjb/ZIlS8rX11erVq3Kcoj+cpUpU0aSlJycnGOfcuXKKSUlxe0jjNyqWbOmIiMjrfsPGjTI7Z36gw8+KB8fH9e8FpQlS5aocuXK6tWrl6utRIkSGj58uE6fPq1vvvnGrf+l/r3hykdoQJExbdo0rVixQvPnz1enTp107NixbE8Me+edd3T99dfLz89P11xzjSpWrKjFixfr1KlTWfpWr17d7X7mE1rmi82+ffskSXXq1Mky9sJDxvv27VOVKlXcXhSlfw7tZi4rp3VnhpLzz8w/vz23L4BjxozRuXPnLnluQ25kV7Ofn5/bSYOZ7dnVe+E8OhwO1a5d2/VR086dOyVJUVFRqlixotvtzTffVGpqapa/Y82aNd3uO51OTZw4UV9++aWCgoLUqlUrTZo0SQkJCXna5vOdPn1akrL8jc/30EMPqW7duurYsaOqVaumBx54QEuXLs3Vei7cpku5cF7LlCmj4ODgAr9sct++fapTp06WKzps9/kL/73hykdoQJHRrFkzRURE6J577tGiRYvUqFEj9e7d2/VELknvv/+++vXrp7CwML311ltaunSpVqxYobZt22Z7WZy3t3e26zIXnLhYEHJad37VVKtWLd133305Hm3I6bPu9PT0HJeZXW35OYeZf6OXXnpJK1asyPaW+W4/U+a5EOd7+OGHtWPHDsXGxsrPz09PP/206tevr02bNuW6pvNt2bJFklS7du0c+1SqVEmbN2/WokWLXOe4dOzYUVFRUdbryW6bCsrF/t75zZP/3lA4CA0okry9vRUbG6tDhw7ptddec7XPnz9ftWrV0qeffqr7779fkZGRioiI0NmzZ/O0nho1akj65x3w+bZv356l76FDh7Icuv7tt9/cllWYMo82ZJ6Qd77Md3knT550a7/w3WF+unAejTHatWuX62OasLAwSZK/v78iIiKyvdmeMBcWFqZHH31Uy5cv15YtW5SWlpbjVR223nvvPUm65EcHvr6+6tq1q15//XXt3r1bgwcP1rvvvqtdu3ZJyjmw5dWF83r69GkdPnzY7eOv8uXLZ/lbp6WlZQmUuamtRo0a2rlzZ5ZA7sl9Hp5FaECR1aZNGzVr1kxxcXGuUJD5Tub8dy7r16/XunXr8rSO4OBghYeH65133nE7LL5ixQpt3brVrW+nTp2Unp7uFmIk6ZVXXpHD4VDHjh3zVMPlCAsL03333acZM2ZkOTzv7++vwMBArV692q399ddfL7B63n33XbdQNX/+fB0+fNg1N02aNFFYWJhefvlltyNImY4ePXrJdZw5cyZLSAwLC1PZsmUv6xsdP/zwQ7355ptq0aKF2rVrl2O/P//80+2+l5eXrr/+eklyrT/zuyQufBHPq5kzZ+qvv/5y3X/jjTd07tw5t30uLCwsy9965syZWY405Ka2Tp06KSEhQfPmzXO1nTt3TlOnTlWZMmXUunXrvGwOrmBccoki7fHHH1f37t01Z84cDRkyRF26dNGnn36qu+66S507d9aePXs0ffp0NWjQINsXIRux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o0YNhYSE6M4779Svv/5aGOVeEYrbPnQ5wsPDFRwcrPbt22vt2rWeLqfQZP4ycYUKFXLsU9z3I5s5kvLnuajYhoaEhIQsh/d8fHxUoUKFi35W2Lt3b73//vtauXKlRo0apffee0/33XdfQZdb4C72M+U5zUduf6b8SpeXOapXr55mz56tzz77TO+//74yMjLUsmVL/fHHH4VRcpGX0z6UlJSk//3vfx6qqmgJDg7W9OnT9cknn+iTTz5RSEiI2rRpo40bN3q6tAKXkZGhhx9+WDfffPNFv/W3uD0Xnc92jvLruahIfCNkfho5cqQmTpx40T7btm3L8/LPP+fhuuuuU3BwsNq1a6fdu3crLCwsz8vF1alFixZuP6bWsmVL1a9fXzNmzNBzzz3nwcpwpahXr57q1avnut+yZUvt3r1br7zyit577z0PVlbwhg4dqi1btujbb7/1dClFlu0c5ddz0VUXGh599FH169fvon1q1aqlypUrZzl57dy5czp+/HiOP7OdnebNm0uSdu3adUWHhsL4mfIrXV7m6EIlSpTQDTfcoF27dhVEiVecnPYhf39/lSxZ0kNVFX3NmjW76l9Ihw0b5jpBvVq1ahftW9yeizLlZo4ulNfnoqvu44mKFSvq2muvvejN19dXLVq00MmTJ7VhwwbX2K+//loZGRmuIGBj8+bNkv4+hHglO/9nyjNl/kx5Tj87nvkz5ee72M+UX+nyMkcXSk9P1y+//HLF7y/5pbjtQ/ll8+bNV+0+ZIzRsGHDtGDBAn399deqWbPmJccUt/0oL3N0oTw/F132qZRXsNtvv93ccMMNZv369ebbb781derUMb169XI9/scff5h69eqZ9evXG2OM2bVrl3n22WfNTz/9ZPbs2WM+++wzU6tWLdOqVStPbUK+mjt3rnE6nWbOnDlm69atZtCgQaZcuXImISHBGGPM/fffb0aOHOnqv3btWuPj42Nefvlls23bNjNu3DhTokQJ88svv3hqEwpcbufomWeeMcuWLTO7d+82GzZsMP/617+Mn5+f+fXXXz21CQUqOTnZbNq0yWzatMlIMlOmTDGbNm0y+/btM8YYM3LkSHP//fe7+v/++++mVKlS5vHHHzfbtm0z06ZNM97e3mbp0qWe2oQCl9s5euWVV8zChQvNzp07zS+//GJGjBhhvLy8zFdffeWpTShQDz74oAkICDCrVq0yhw8fdt3OnDnj6lPcn4vyMkf59VxUrEPDn3/+aXr16mXKlClj/P39TXR0tElOTnY9vmfPHiPJrFy50hhjzP79+02rVq1MhQoVjNPpNLVr1zaPP/64OXXqlIe2IP9NnTrVVK9e3fj6+ppmzZqZ77//3vVY69atTVRUlFv/jz76yNStW9f4+vqahg0bmsWLFxdyxYUvN3P08MMPu/oGBQWZTp06mY0bN3qg6sKReXnghbfMOYmKijKtW7fOMiY8PNz4+vqaWrVqmbfffrvQ6y5MuZ2jiRMnmrCwMOPn52cqVKhg2rRpY77++mvPFF8IspsbSW77RXF/LsrLHOXXcxG/cgkAAKxcdec0AACAgkFoAAAAVggNAADACqEBAABYITQAAAArhAYAAGCF0AAAAKwQGgAAgBVCA4BC5XA4tHDhQk+XASAPCA0ArPXr10/dunXzdBkAPITQAAAArBAaAORJmzZtNHz4cD3xxBOqUKGCKleurPHjx7v12blzp1q1aiU/Pz81aNBAK1asyLKcAwcOqEePHipXrpwqVKigO++8U3v37pUk/fbbbypVqpQ+/PBDV/+PPvpIJUuW1NatWwty8wBkg9AAIM/eeecdlS5dWuvXr9ekSZP07LPPuoJBRkaG7r77bvn6+mr9+vWaPn26nnzySbfxf/31lyIjI1W2bFmtWbNGa9euVZkyZXT77bcrLS1N1157rV5++WU99NBD2r9/v/744w8NGTJEEydOVIMGDTyxyUCxxq9cArDWr18/nTx5UgsXLlSbNm2Unp6uNWvWuB5v1qyZ2rZtqwkTJmj58uXq3Lmz9u3bpypVqkiSli5dqo4dO2rBggXq1q2b3n//fT3//PPatm2bHA6HJCktLU3lypXTwoUL1aFDB0lSly5dlJSUJF9fX3l7e2vp0qWu/gAKj4+nCwBw5br++uvd7gcHB+vIkSOSpG3btikkJMQVGCSpRYsWbv1//vln7dq1S2XLlnVrP3v2rHbv3u26P3v2bNWtW1deXl769ddfCQyAhxAaAORZiRIl3O47HA5lZGRYjz99+rSaNGmiDz74IMtjFStWdP3/zz//rJSUFHl5eenw4cMKDg7Oe9EA8ozQAKBA1K9fXwcOHHB7kf/+++/d+tx4442aN2+eKlWqJH9//2yXc/z4cfXr10+jR4/W4cOH1adPH23cuFElS5Ys8G0A4I4TIQEUiIiICNWtW1dRUVH6+eeftWbNGo0ePdqtT58+fRQYGKg777xTa9as0Z49e7Rq1SoNHz5cf/zxhyRpyJAhCgkJ0ZgxYzRlyhSlp6frscce88QmAcUeoQFAgfDy8tKCBQv0v//9T82aNdOAAQP0wgsvuPUpVaqUVq9ererVq+vuu+9W/fr11b9/f509e1b+/v569913tWTJEr333nvy8fFR6dKl9f7772vWrFn68ssvPbRlQPHF1RMAAMAKRxoAAIAVQgMAALBCaAAAAFYIDQAAwAqhAQAAWCE0AAAAK4QGAABghdAAAACsEBoAAIAVQgMAALBCaAAAAFYIDQAAwMr/A+q91XH0JJXkAAAAAElFTkSuQmCC
+" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Random Values Bar Chart:</h3><br><br>This graph displays the three random numbers generated between 0 and 1, showing their relative scale.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Part B</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">1.Solve the following two systems of linear equations using matrices and determine the    number of solutions using the functions.<br>* 1:<br><br>2x1+3x2-4x3=6,x1-4x2=8<br><br><br>* 2:<br><br>3y1-4y2+5y3=10,-y1+2y2-4y3=8<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># ==========================================
+# systems1:
+# 2x1 + 3x2 - 4x3 = 6
+# 1x1 - 4x2 + 0x3 = 8
+# ==========================================
+A1 = np.array([[2, 3, -4], [1, -4, 0]])
+B1 = np.array([6, 8])
+
+rank1 = np.linalg.matrix_rank(A1)
+print(f"systems1 Rank is : {rank1}，but 3 variables, so there are infinitely many solutions")
+
+# ==========================================
+# systems2:
+# 3y1 - 4y2 + 5y3 = 10
+# -1y1 + 2y2 - 4y3 = 8
+# ==========================================
+A2 = np.array([[3, -4, 5],[-1, 2, -4]])
+B2 = np.array([10, 8])
+
+rank2 = np.linalg.matrix_rank(A2)
+print(f"systems2 Rank is : {rank2}，but 3 variables, so there are infinitely many solutions")
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">systems1 Rank is : 2，but 3 variables, so there are infinitely many solutions
+systems2 Rank is : 2，but 3 variables, so there are infinitely many solutions
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">2.Publish the notebook as an HTML file on GitHub Pages two weeks after the due date.</div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>

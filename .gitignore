@@ -1,0 +1,14 @@
+# 虛擬環境
+venv/
+.venv/
+env/
+AIAMvenv/
+
+# Python 快取
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook 檢查點
+.ipynb_checkpoints/
