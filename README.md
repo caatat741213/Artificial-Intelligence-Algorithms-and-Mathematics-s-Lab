@@ -24,24 +24,24 @@ Lab/
 
 ## 🚀 Lab Summaries
 ### Lab 1: Basic NumPy Operations
-    * Goal: Practice using NumPy for 2-D arrays and solving systems of linear equations.
+* Goal: Practice using NumPy for 2-D arrays and solving systems of linear equations.
 
-    * Key Tasks: Array slicing, reshaping, broadcasting, and matrix multiplication.
+* Key Tasks: Array slicing, reshaping, broadcasting, and matrix multiplication.
 
 ###  Lab 2: Coding_questions
-    * Part A: Spam Classification
+* Part A: Spam Classification
 
-        * Compare GaussianNB and MultinomialNB models.
+  * Compare GaussianNB and MultinomialNB models.
 
-        * Used `CountVectorizer` for text processing.
+   * Used `CountVectorizer` for text processing.
 
-    Result: MultinomialNB performed better for text classification.
+* Result: MultinomialNB performed better for text classification.
 
-    * Part B: Data Cleaning (AirBnB NYC)
+* Part B: Data Cleaning (AirBnB NYC)
 
-        * Removed outliers using MAD (Median Absolute Deviation).
+  * Removed outliers using MAD (Median Absolute Deviation).
 
-    Analyzed the relationship between `Room Type` and `Price`.
+* Analyzed the relationship between `Room Type` and `Price`.
 
 ## 🛠️ Setup Instructions
 1. Clone the repository:
